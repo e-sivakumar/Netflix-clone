@@ -2,16 +2,16 @@ import './App.css'
 import { useRef } from 'react';
 
 const moviesList = [
-  "src/assets/movie_1.webp",
-  "src/assets/movie_2.webp",
-  "src/assets/movie_3.webp",
-  "src/assets/movie_4.webp",
-  "src/assets/movie_5.webp",
-  "src/assets/movie_6.webp",
-  "src/assets/movie_7.webp",
-  "src/assets/movie_1.webp",
-  "src/assets/movie_2.webp",
-  "src/assets/movie_3.webp"
+  "/assets/movie_2.webp",
+  "/assets/movie_3.webp",
+  "/assets/movie_4.webp",
+  "/assets/movie_1.webp",
+  "/assets/movie_5.webp",
+  "/assets/movie_6.webp",
+  "/assets/movie_7.webp",
+  "/assets/movie_1.webp",
+  "/assets/movie_2.webp",
+  "/assets/movie_3.webp"
 ]
 
 const reasons = [
@@ -75,10 +75,10 @@ function App() {
       {/* hero section */}
       <div className={`relative h-[100%] w-[100%] overflow-hidden`}>
       {/* <div  className={`bg-[url(src/assets/hero_section.jpg)] h-screen w-screen `}></div> */}
-        <img src={"src/assets/hero_section.jpg"} className='w-screen object-cover h-screen z-[1] brightness-[0.3]' alt="asj" />
+        <img src={"/assets/hero_section.jpg"} className='w-screen object-cover h-screen z-[1] brightness-[0.3]' alt="asj" />
         <div className='z-[2] absolute top-2 w-full flex flex-row justify-between pt-0 px-1 md:px-32 items-center'>
           {/* <div className='bg-[url(src/assets/Netflix_Logo_PMS.png)] '></div> */}
-        <img src={"src/assets/Netflix_Logo_PMS.png"} className='w-auto h-12 md:h-20 z-[1] brightness-150' alt="asj" />
+        <img src={"/assets/Netflix_Logo_PMS.png"} className='w-auto h-12 md:h-20 z-[1] brightness-150' alt="asj" />
           <div className='flex flex-row h-7 md:h-10 gap-2 md:gap-8 '>
             {/* <button className='h-auto'>Engish</button> */}
             <select name="English" className='cursor-pointer text-white text-xs md:text-lg rounded-lg w-14 md:w-20 bg-transparent border border-solid border-gray-200 ' >
