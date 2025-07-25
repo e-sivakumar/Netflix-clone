@@ -1,5 +1,5 @@
 import './App.css'
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 const moviesList = [
   "/assets/movie_2.webp",
@@ -44,12 +44,12 @@ const faqs = [
     answer: "Netflix is a streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries and more – on thousands of internet-connected devices. You can watch as much as you want, whenever you want, without a single ad – all for one low monthly price. There's always something new to discover, and new TV shows and movies are added every week!"
   },
   {
-    question: "What is Netflix",
-    answer: "Netflix is a streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries and more – on thousands of internet-connected devices. You can watch as much as you want, whenever you want, without a single ad – all for one low monthly price. There's always something new to discover, and new TV shows and movies are added every week!"
+    question: "How much does Netflix cost?",
+    answer: "Watch Netflix on your smartphone, tablet, Smart TV, laptop, or streaming device, all for one fixed monthly fee. Plans range from ₹149 to ₹649 a month. No extra costs, no contracts."
   },
   {
-    question: "What is Netflix",
-    answer: "Netflix is a streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries and more – on thousands of internet-connected devices. You can watch as much as you want, whenever you want, without a single ad – all for one low monthly price. There's always something new to discover, and new TV shows and movies are added every week!"
+    question: "Where can i watch",
+    answer: "Watch anywhere, anytime. Sign in with your Netflix account to watch instantly on the web at netflix.com from your personal computer or on any internet-connected device that offers the Netflix app, including smart TVs, smartphones, tablets, streaming media players and game consoles. You can also download your favourite shows with the iOS or Android app. Use downloads to watch while you're on the go and without an internet connection. Take Netflix with you anywhere."
   },
   {
     question: "What is Netflix",
@@ -68,6 +68,14 @@ const faqs = [
 function App() {
 
   const scrollRef = useRef<HTMLDivElement | null>(null);
+  const [currentView, setCurrentView] = useState(-1);
+  // const [isOpen , setIsOpen] = useState(false);
+
+  function faqOnclick(i:number){
+    i==currentView?
+    setCurrentView(-1) :
+    setCurrentView(i);
+  }
 
   return (
     <div className=' w-full p-0 m-0'>
@@ -192,7 +200,7 @@ function App() {
    <div className='grid grid-cols-2 xl:grid-cols-4' >
     {reasons.map((reason)=>{
       return (
-        <div className='relative m-2 text-left bg-slate-800 p-4 min-h-[16rem] xl:min-h-[20rem] rounded-xl '>
+        <div className='relative m-2 text-left bg-slate-800 p-2 md:p-4 min-h-[15rem] xl:min-h-[20rem] rounded-xl '>
           <div className='flex flex-col mx-2' >
             <div className=' text-[0.9rem] sm:text-md md:text-xl font-bold mb-5' >{reason.title}</div>
             <div className='text-[0.6rem] sm:text-[0.9rem] md:text-md font-medium ' >{reason.content}</div>
@@ -211,16 +219,23 @@ function App() {
   <div className='w-[80%] flex flex-col'>
     <h2 className=' text-md md:text-2xl font-bold text-left '>Frequently asked questions</h2>
     <div className='flex flex-col'>
-     {faqs.map((faq)=>{
+     {faqs.map((faq, i)=>{
       return(
-        <div className=' bg-neutral-700 hover:bg-neutral-600 cursor-pointer rounded-xs w-full m-1 h-[4rem] '>
+        <div className=' m-2 w-full'>
+        <div 
+        className=' bg-neutral-700 hover:bg-neutral-600 cursor-pointer rounded-xs w-full h-[4rem] '
+        onClick={()=>{faqOnclick(i)}}
+        >
           <div className=' h-full  flex px-6 justify-between items-center'>
             <div className='text-sm md:text-xl'>{faq.question}</div>
             <div className=' text-2xl md:text-5xl'>
            {'+'}
           </div>
           </div>
-          
+        </div>
+          <div className={`${currentView == i ? '' : 'hidden'} bg-neutral-700 p-5 mt-1 text-xl `}>
+            {faq.answer}
+          </div>
         </div>
       )
      })}
