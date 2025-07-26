@@ -65,6 +65,24 @@ const faqs = [
   },
 ]
 
+const footerLinks = [
+  "FAQ",
+  "Investor Relations",
+  "Privacy",
+  "Speed Test",
+  "Help Center",
+  "Jobs",
+  "Cookie Preference",
+  "Legal Notices",
+  "Account",
+  "Ways to Watch",
+  "Corporate Information",
+  "Only on Netflix",
+  "Media Centre",
+  "Terms of Use",
+  "Contact Us"
+]
+
 function App() {
 
   const scrollRef = useRef<HTMLDivElement | null>(null);
@@ -197,13 +215,13 @@ function App() {
 <div className='w-full flex justify-center mb-10'>
   <div className='w-[80%] flex flex-col'>
     <h2 className=' font-bold text-left mb-4 text-xl md:text-2xl '>More reasons to join</h2>
-   <div className='grid grid-cols-2 xl:grid-cols-4' >
+   <div className='grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4' >
     {reasons.map((reason)=>{
       return (
-        <div className='relative m-2 text-left bg-slate-800 p-2 md:p-4 min-h-[15rem] xl:min-h-[20rem] rounded-xl '>
+        <div className='relative m-2 text-left bg-slate-800 p-2 md:p-4 min-h-[10rem] md:min-h-[15rem] xl:min-h-[20rem] rounded-xl '>
           <div className='flex flex-col mx-2' >
-            <div className=' text-[0.9rem] sm:text-md md:text-xl font-bold mb-5' >{reason.title}</div>
-            <div className='text-[0.6rem] sm:text-[0.9rem] md:text-md font-medium ' >{reason.content}</div>
+            <div className=' text-[1rem] sm:text-md md:text-xl font-bold mb-5' >{reason.title}</div>
+            <div className='text-[0.8rem] sm:text-[0.9rem] md:text-md font-medium ' >{reason.content}</div>
         </div>
         <div className=' w-10 h-10 md:w-20 md:h-20 absolute right-2 bottom-2'>{reason.svg}</div>
         </div>
@@ -214,7 +232,6 @@ function App() {
 </div>
 
 {/* faq */}
-
 <div className='w-full flex justify-center mb-10'>
   <div className='w-[80%] flex flex-col'>
     <h2 className=' text-md md:text-2xl font-bold text-left '>Frequently asked questions</h2>
@@ -229,17 +246,78 @@ function App() {
           <div className=' h-full  flex px-6 justify-between items-center'>
             <div className='text-sm md:text-xl'>{faq.question}</div>
             <div className=' text-2xl md:text-5xl'>
-           {'+'}
+           {currentView == i ? 'x' : '+'}
           </div>
           </div>
         </div>
-          <div className={`${currentView == i ? '' : 'hidden'} bg-neutral-700 p-5 mt-1 text-xl `}>
+          <div className={`${currentView == i ? 'opacity-100' : 'opacity-0 hidden'} overflow-hidden
+            transition-all duration-800 ease-in-out bg-neutral-700 p-5 mt-1 text-xl `}>
             {faq.answer}
           </div>
         </div>
       )
      })}
     </div>
+  </div>
+</div>
+
+{/* footer */}
+<div className='w-full flex justify-center mb-10'>
+  <div className='w-[80%]'>
+    <h2>Ready to watch? Enter your email to create or restart your membership.
+    </h2>
+    <div>
+    <div className='flex flex-col  md:justify-center md:items-center md:flex-row mt-4 gap-4'>
+            <input type="email" autoComplete='email' className=' bg-transparent w-[100%] md:w-[60%]  border border-gray-600 rounded-md pl-2 text-[1.4rem] h-[3.4rem] ' placeholder='Email address' />
+            <button className='bg-[#E50914] px-1 text-sm md:text-xl w-[8rem] md:min-w-[12rem] '>Get Started <span>﹥</span>  </button>
+          </div>
+    </div>
+    <div className='text-left mt-10'>Questions? Call <a className='underline' href='tel:000-800-919-1743' >000-800-919-1743</a></div>
+  </div>
+</div>
+
+<div className="w-full flex justify-center mb-20">
+      <div className="w-[80%] sm:block flex justify-start">
+        <ul
+          role="list"
+          className="
+            grid
+            grid-cols-1      /* default: 1 column */
+            sm:grid-cols-2   /* ≥640px: 2 columns */
+            md:grid-cols-3   /* ≥768px: 3 columns */
+            xl:grid-cols-4   /* ≥1280px: 4 columns */
+            gap-x-8          /* horizontal gap */
+            gap-y-4          /* vertical gap */
+          "
+        >
+          {footerLinks.map((link) => (
+            <li key={link}>
+              <a
+                href="#"
+                className="text-sm text-left text-gray-400 underline block"
+              >
+                {link}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+<div className='w-full flex justify-center mb-24' >
+  <div className=' w-[80%] flex gap-10 flex-col justify-start'>
+
+  <select name="English" className='cursor-pointer text-white text-xs md:text-lg rounded-lg w-14 md:w-24 p-2 bg-transparent border border-solid border-gray-200 ' >
+              <option value="English" className='text-black '> English</option>
+              <option value="Spanish" className='text-black'> Spanish</option>
+            </select>
+
+  <div className='text-left text-slate-300 text-sm '>Netflix India</div>
+
+  <div className='text-left text-slate-300 text-sm '>
+    This page is protected by Google reCAPTCHA to ensure you're not a bot. {"  "} 
+    <a href="#" className=' text-blue-400 underline ' >Learn More</a>
+</div>
   </div>
 </div>
 
