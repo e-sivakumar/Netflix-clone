@@ -146,9 +146,7 @@ function App() {
     overflow-y-hidden
     snap-x snap-mandatory scroll-smooth
     mx-10 px-10
-    h-[13rem]
     w-auto
-    md:h-[14rem]
   "
 >
     {moviesList.map((src, i) => (
@@ -158,12 +156,15 @@ function App() {
           relative flex-none
           
           snap-start
+          hover:scale-110
+          transition-transform
+          cursor-pointer
         "
       >
         <img
           src={src}
           alt=""
-          className="w-full h-full rounded"
+          className="w-auto h-full rounded"
         />
         {/* big rank number */}
         <span className="
